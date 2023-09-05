@@ -24,14 +24,14 @@
 #include <dt-bindings/zmk/outputs.h>
 
 &mt {
-    tapping-term-ms = <200>;
-    quick-tap-ms = <125>;
+    tapping-term-ms = <180>;
+    quick-tap-ms = <145>;
     global-quick-tap;
 };
 
 &lt {
-    tapping-term-ms = <200>;
-    quick-tap-ms = <125>;
+    tapping-term-ms = <180>;
+    quick-tap-ms = <145>;
     global-quick-tap;
 };
 
