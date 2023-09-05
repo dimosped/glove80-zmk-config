@@ -25,13 +25,13 @@
 
 &mt {
     tapping-term-ms = <180>;
-    quick-tap-ms = <145>;
+    quick-tap-ms = <155>;
     global-quick-tap;
 };
 
 &lt {
     tapping-term-ms = <180>;
-    quick-tap-ms = <145>;
+    quick-tap-ms = <155>;
     global-quick-tap;
 };
 
