@@ -100,7 +100,38 @@
 
     /* Custom Defined Behaviors */
 / {
-    
+    td_lshift: tap_dance_lshift {
+    compatible = "zmk,behavior-tap-dance";
+    label = "TAP_DANCE_LSHIFT";
+    #binding-cells = <0>;
+    tapping-term-ms = <250>;
+    bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
+};
+
+td_rshift: tap_dance_rshift {
+    compatible = "zmk,behavior-tap-dance";
+    label = "TAP_DANCE_RSHIFT";
+    #binding-cells = <0>;
+    tapping-term-ms = <250>;
+    bindings = <&kp RIGHT_SHIFT>, <&kp CAPS>;
+};
+
+td_rctrl: tap_dance_rctrl{
+    compatible = "zmk,behavior-tap-dance";
+    label = "TAP_DANCE_RCTRL";
+    #binding-cells = <0>;
+    tapping-term-ms = <200>;
+    bindings = <&kp RCTRL>, <&to 3>;
+};
+
+td_rctrlb: tap_dance_rctrlb {
+    compatible = "zmk,behavior-tap-dance";
+    label = "TAP_DANCE_RCTRLB";
+    #binding-cells = <0>;
+    tapping-term-ms = <200>;
+    bindings = <&kp RCTRL>, <&to 0>;
+};
+
 };
 
     /* Automatically generated keymap */
@@ -111,12 +142,12 @@
 
         layer_Base {
             bindings = <
-     &kp F1    &kp F2   &kp F3    &kp F4     &kp F5                                                                                   &kp F6     &kp F7    &kp F8  &mt F11 F9  &mt F12 F10
-  &kp EQUAL    &kp N1   &kp N2    &kp N3     &kp N4  &kp N5                                                                   &kp N6  &kp N7     &kp N8    &kp N9      &kp N0    &kp MINUS
-    &kp TAB     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                    &kp Y   &kp U      &kp I     &kp O       &kp P     &kp BSLH
-  &kp GRAVE     &kp A    &kp S     &kp D    &lt 3 F   &kp G                                                                    &kp H   &kp J      &kp K     &kp L    &kp SEMI      &kp SQT
-  &kp LSHFT     &kp Z    &kp X     &kp C      &kp V   &kp B  &kp LCTRL  &kp LALT  &kp LSHFT  &kp LSHFT   &kp RALT  &kp RCTRL   &kp N   &kp M  &kp COMMA   &kp DOT    &kp FSLH    &kp RSHFT
- &magic 2 0  &kp CAPS  &kp ESC  &kp LEFT  &kp RIGHT           &kp BSPC   &kp DEL   &kp LGUI   &kp LGUI  &lt 3 RET  &kp SPACE          &kp UP   &kp DOWN  &kp LBKT    &kp RBKT       &lower
+     &kp F1    &kp F2   &kp F3    &kp F4     &kp F5                                                                                                      &kp F6     &kp F7    &kp F8  &mt F11 F9  &mt F12 F10
+  &kp EQUAL    &kp N1   &kp N2    &kp N3     &kp N4  &kp N5                                                                                      &kp N6  &kp N7     &kp N8    &kp N9      &kp N0    &kp MINUS
+    &kp TAB     &kp Q    &kp W     &kp E      &kp R   &kp T                                                                                       &kp Y   &kp U      &kp I     &kp O       &kp P     &kp BSLH
+  &kp GRAVE     &kp A    &kp S     &kp D      &kp F   &kp G                                                                                       &kp H   &kp J      &kp K     &kp L    &kp SEMI      &kp SQT
+ &td_lshift     &kp Z    &kp X     &kp C      &kp V   &kp B  &kp LCTRL       &kp LALT       &kp PG_UP      &kp HOME       &kp RALT    &td_rctrl   &kp N   &kp M  &kp COMMA   &kp DOT    &kp FSLH   &td_rshift
+ &magic 2 0  &kp CAPS  &kp ESC  &kp LEFT  &kp RIGHT           &kp BSPC  &mt LSHFT DEL  &mt LGUI PG_DN  &mt RGUI END  &mt RSHFT RET  &lt 3 SPACE          &kp UP   &kp DOWN  &kp LBKT    &kp RBKT       &lower
             >;
         };
 
@@ -138,18 +169,18 @@
        &none  &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                         &none   &none   &none   &none   &none           &none
  &bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                         &none   &none   &none   &none   &none     &bootloader
       &reset            &none            &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none   &none          &reset
-       &none            &none            &none            &none            &none                    &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none   &none           &none
+       &none            &none            &none            &none            &none                    &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none   &none           &to 0
             >;
         };
 
         layer_Fn {
             bindings = <
- &trans  &trans     &trans     &trans  &trans                                                                       &trans    &trans     &trans     &trans  &trans
- &trans  &trans     &trans     &trans  &trans  &trans                                                     &trans    &trans    &trans     &trans     &trans  &trans
- &trans  &trans   &kp LGUI   &kp LALT  &trans  &trans                                                     &trans    &trans    &kp UP     &trans  &kp PG_UP  &trans
- &trans  &trans  &kp LCTRL  &kp LSHFT  &trans  &trans                                                     &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN  &trans
- &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans  &trans  &kp HOME    &trans    &kp END     &trans  &trans
- &trans  &trans     &trans     &trans  &trans          &trans  &trans  &trans  &trans  &trans  &kp RSHFT            &trans    &trans     &trans     &trans  &trans
+ &trans  &trans  &trans     &trans     &trans                                                                        &trans    &trans     &trans  &trans  &trans
+ &trans  &trans  &trans     &trans     &trans  &trans                                                      &trans    &trans    &trans     &trans  &trans  &trans
+ &trans  &trans  &trans   &kp LGUI   &kp LALT  &trans                                                      &trans    &trans    &trans     &trans  &trans  &trans
+ &trans  &trans  &trans  &kp LCTRL  &kp LSHFT  &trans                                                      &trans    &trans    &trans     &trans  &trans  &trans
+ &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &td_rctrlb  &trans  &kp HOME    &kp UP    &kp END  &trans  &trans
+ &trans  &trans  &trans   &kp HOME    &kp END          &trans  &trans  &trans  &trans  &trans      &trans          &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &to 0
             >;
         };
 
